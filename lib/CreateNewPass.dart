@@ -1,21 +1,22 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/CreateAccountScreen.dart';
-import 'package:flutter_application_1/EnterEmail.dart';
+import 'package:flutter_application_1/OTPVerification.dart';
 import 'package:flutter_application_1/colors_constants.dart';
 import 'package:flutter_application_1/components/CustomTextField.dart';
 import 'package:flutter_application_1/components/GradientButton.dart';
+import 'package:flutter_application_1/loginScreen.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 
-class Loginscreen extends StatefulWidget {
-  const Loginscreen({super.key});
+class Createnewpass extends StatefulWidget {
+  const Createnewpass({super.key});
 
   @override
-  State<Loginscreen> createState() => _LoginscreenState();
+  State<Createnewpass> createState() => _CreatenewpassState();
 }
 
-class _LoginscreenState extends State<Loginscreen> {
+class _CreatenewpassState extends State<Createnewpass> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -29,11 +30,11 @@ class _LoginscreenState extends State<Loginscreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: screenHeight * 0.15),
+              SizedBox(height: screenHeight * 0.3),
 
-              // Login title
+              // title
               Text(
-                'Login to your account!',
+                'Create New Password!',
                 style: TextStyle(
                   fontFamily: 'hellix',
                   fontSize: 28 * (screenWidth / 375),
@@ -41,98 +42,33 @@ class _LoginscreenState extends State<Loginscreen> {
                   color: AppColors.HText,
                 ),
               ),
-              SizedBox(height: screenHeight * 0.01),
-              Text(
-                'Find the things that you love!',
-                style: TextStyle(
-                  fontFamily: 'hellix',
-                  fontSize: 16 * (screenWidth / 375),
-                  color: Colors.black87,
-                ),
-              ),
+
               SizedBox(height: screenHeight * 0.04),
 
-              // Google Sign-In Button
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: Image.asset(
-                  'assets/images/google.png',
-                  width: 24 * (screenWidth / 375),
-                  height: 24 * (screenWidth / 375),
-                ),
-                label: Text(
-                  'Login with Google',
-                  style: TextStyle(
-                    fontFamily: 'hellix',
-                    color: AppColors.Text,
-                    fontSize: 16 * (screenWidth / 375),
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.HText,
-                  minimumSize: Size(screenWidth, screenHeight * 0.07),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: screenHeight * 0.03),
-
-              Text(
-                'or Login with Email',
-                style: TextStyle(
-                  fontFamily: 'hellix',
-                  fontSize: 13 * (screenWidth / 375),
-                  color: Colors.black54,
-                ),
-              ),
-
-              SizedBox(height: screenHeight * 0.02),
-
-              // Email Address Input
+              // Password Input
               const CustomTextField(
-                labelText: 'Email address',
-                keyboardType: TextInputType.emailAddress,
+                labelText: 'Enter New Password',
+                isPassword: true,
               ),
 
               SizedBox(height: screenHeight * 0.02),
 
               // Password Input
               const CustomTextField(
-                labelText: 'Password',
+                labelText: 'Re-Enter Password',
                 isPassword: true,
               ),
 
-              // Forgot Password? Text
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: () {
-                    Get.to(Enteremail());
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 12 * (screenWidth / 375),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              SizedBox(height: screenHeight * 0.03),
 
-              SizedBox(height: screenHeight * 0.04),
-
-              // Login Button
               GradientButton(
-                label: 'Login',
-                onPressed: () {},
+                label: 'Continue',
+                onPressed: () {
+                  // Get.to(OTPVerificationScreen());
+                },
               ),
 
-              SizedBox(height: screenHeight * 0.02),
+              SizedBox(height: screenHeight * 0.20),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -172,7 +108,7 @@ class _LoginscreenState extends State<Loginscreen> {
                 ),
               ),
 
-              SizedBox(height: screenHeight * 0.03),
+              SizedBox(height: screenHeight * 0.02),
 
               RichText(
                 text: TextSpan(
@@ -183,16 +119,29 @@ class _LoginscreenState extends State<Loginscreen> {
                   ),
                   children: [
                     const TextSpan(
-                      text: 'Don’t have an account? ',
+                      text: 'Back to: ',
                       style: TextStyle(
                         fontFamily: 'hellix',
                       ),
                     ),
                     TextSpan(
-                      text: 'Sign Up',
+                      text: 'Login ',
                       style: TextStyle(
                         fontFamily: 'hellix',
                         color: AppColors.login,
+                        decoration: TextDecoration.underline,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Get.to(Loginscreen());
+                        },
+                    ),
+                    TextSpan(text: '/'),
+                    TextSpan(
+                      text: ' Sign Up',
+                      style: TextStyle(
+                        fontFamily: 'hellix',
+                        color: AppColors.HText,
                         decoration: TextDecoration.underline,
                       ),
                       recognizer: TapGestureRecognizer()

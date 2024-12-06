@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/CreateProfile.dart';
 import 'package:flutter_application_1/components/GradientButton.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/route_manager.dart';
 
 class OTPVerificationScreen extends StatefulWidget {
   const OTPVerificationScreen({Key? key}) : super(key: key);
@@ -98,7 +101,9 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
             // Verify Button
             GradientButton(
               label: 'Verify',
-              onPressed: () {},
+              onPressed: () {
+                Get.off(CreateProfileScreen());
+              },
             ),
             SizedBox(height: 20),
 
