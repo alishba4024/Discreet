@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/CreateAccountScreen.dart';
 import 'package:flutter_application_1/colors_constants.dart';
 import 'package:flutter_application_1/components/button_component.dart';
+import 'package:flutter_application_1/loginScreen.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 
@@ -68,6 +69,7 @@ class _SelectToBeginState extends State<SelectToBegin> {
                       setState(() {
                         selectedButton = 'customer';
                       });
+                      Get.to(Loginscreen());
                     },
                   ),
                   SizedBox(height: buttonSpacing),
@@ -78,7 +80,7 @@ class _SelectToBeginState extends State<SelectToBegin> {
                       setState(() {
                         selectedButton = 'employee';
                       });
-                      Get.to(CreateAccountScreen());
+                      Get.to(Loginscreen());
                     },
                   ),
                 ],

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/CreateProfile.dart';
+import 'package:flutter_application_1/Dashboard.dart';
+import 'package:flutter_application_1/ScanTheQR.dart';
+import 'package:flutter_application_1/SelectDocumentScreen.dart';
+
 import 'package:flutter_application_1/components/GradientButton.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 
 class OTPVerificationScreen extends StatefulWidget {
-  const OTPVerificationScreen({Key? key}) : super(key: key);
+  final String userType; // 'customer' or 'employee'
+
+  const OTPVerificationScreen({Key? key, required this.userType})
+      : super(key: key);
 
   @override
   _OTPVerificationScreenState createState() => _OTPVerificationScreenState();
@@ -54,7 +60,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 return SizedBox(
                   width: screenWidth * 0.12,
                   child: TextField(
-                    autofocus: true,
+                    autofocus: index == 0,
                     maxLength: 1,
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.next,
@@ -69,9 +75,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                       counterText: "",
                       filled: true,
                       fillColor: Colors.white,
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical:
-                              10), // Adjust vertical padding to ensure circle shape
+                      contentPadding: const EdgeInsets.symmetric(vertical: 10),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(color: Colors.grey.shade400),
@@ -102,7 +106,11 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
             GradientButton(
               label: 'Verify',
               onPressed: () {
-                Get.off(CreateProfileScreen());
+                if (widget.userType == 'customer') {
+                  Get.off(() => const Dashboard());
+                } else if (widget.userType == 'employee') {
+                  Get.off(() => CreateProfileScreen());
+                }
               },
             ),
             SizedBox(height: 20),

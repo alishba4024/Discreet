@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/CreateAccountScreen.dart';
 import 'package:flutter_application_1/Dashboard.dart';
+import 'package:flutter_application_1/QRDashboard.dart';
 import 'package:flutter_application_1/colors_constants.dart';
 import 'package:flutter_application_1/components/GradientButton.dart';
 import 'package:get/instance_manager.dart';
@@ -13,13 +14,13 @@ class ProfileCreated extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.HText,
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.06),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.Text,
               borderRadius: BorderRadius.circular(screenWidth * 0.05),
             ),
             padding: EdgeInsets.all(screenWidth * 0.06),
@@ -30,10 +31,10 @@ class ProfileCreated extends StatelessWidget {
                 CircleAvatar(
                   radius: screenWidth * 0.13,
                   backgroundColor: AppColors.login,
-                  child: const Icon(
+                  child: Icon(
                     Icons.check,
                     size: 50,
-                    color: Colors.white,
+                    color: AppColors.Text,
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.03),
@@ -45,7 +46,7 @@ class ProfileCreated extends StatelessWidget {
                     fontSize: screenWidth * 0.04,
                     fontFamily: 'hellix',
                     fontWeight: FontWeight.normal,
-                    color: Colors.black,
+                    color: AppColors.HText,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -55,7 +56,7 @@ class ProfileCreated extends StatelessWidget {
                 GradientButton(
                   label: 'Continue',
                   onPressed: () {
-                    Get.to(Dashboard());
+                    Get.to(Qrdashboard());
                   },
                 ),
               ],

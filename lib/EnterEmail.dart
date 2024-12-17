@@ -57,7 +57,9 @@ class _EnteremailState extends State<Enteremail> {
                 GradientButton(
                   label: 'Continue',
                   onPressed: () {
-                    Get.to(OTPVerificationScreen());
+                    Get.to(OTPVerificationScreen(
+                      userType: 'employee',
+                    ));
                   },
                 ),
 

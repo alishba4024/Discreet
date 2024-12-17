@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ScanTheQR.dart';
-import 'package:flutter_application_1/SelectDocumentScreen.dart';
 import 'package:flutter_application_1/colors_constants.dart';
 import 'package:flutter_application_1/components/footer_component.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/route_manager.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+class Qrdashboard extends StatefulWidget {
+  const Qrdashboard({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<Qrdashboard> createState() => _QrdashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _QrdashboardState extends State<Qrdashboard> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -78,89 +74,12 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ],
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.09),
                     Column(
                       children: [
-                        // Card 1: Create QR Section
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.23,
-                          padding: EdgeInsets.all(screenWidth * 0.05),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10), // Top-left corner
-                              topRight: Radius.circular(10), // Top-right corner
-                            ),
-                            gradient: LinearGradient(
-                              begin: Alignment.topRight,
-                              end: Alignment.bottomLeft,
-                              colors: [
-                                Color(0xFFFFFFFF),
-                                Color(0xFF3D57B5),
-                              ],
-                            ),
-                          ),
-                          child: Center(
-                            child: Image.asset(
-                              'assets/images/FolderIcon.png',
-                              width: screenWidth * 0.4,
-                              height: MediaQuery.of(context).size.height * 0.2,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-
-                        // Create QR Section
-                        Container(
-                          padding: EdgeInsets.all(screenWidth * 0.05),
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
-                            ),
-                            color: AppColors.Text,
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              Get.to(SelectDocumentScreen());
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Create QR",
-                                      style: TextStyle(
-                                        fontFamily: 'hellix',
-                                        fontSize: screenWidth * 0.05,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.login,
-                                      ),
-                                    ),
-                                    const Text(
-                                      '180+ countries supported',
-                                      style: TextStyle(
-                                        fontFamily: 'hellix',
-                                        fontSize: 14,
-                                        color: Colors.black54,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  size: screenWidth * 0.05,
-                                  color: AppColors.login,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.07),
-                        // Card 2: MY QR's
+                            height: MediaQuery.of(context).size.height * 0.09),
+                        // Card 1: MY QR's
                         Stack(
                           clipBehavior: Clip.none,
                           children: [
@@ -212,7 +131,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              Get.to(Scantheqr());
+                              // Get.to(Scantheqr());
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -221,7 +140,7 @@ class _DashboardState extends State<Dashboard> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "My QR's",
+                                      "Scan Qr/Check Record",
                                       style: TextStyle(
                                         fontFamily: 'hellix',
                                         fontSize: screenWidth * 0.05,
